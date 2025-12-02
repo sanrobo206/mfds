@@ -1,0 +1,22 @@
+# UGV Persistent USB Rules
+# Generated based on user-verified physical paths
+
+# Secondary Base Controller (ttyACM0)
+ENV{ID_PATH}=="platform-xhci-hcd.0-usb-0:1:1.0", SYMLINK+="base_secondary", MODE:="0777"
+
+# Gimbal Controller (ttyACM1)
+ENV{ID_PATH}=="platform-xhci-hcd.1-usb-0:1:1.0", SYMLINK+="gimbal", MODE:="0777"
+
+# Steer Controller (ttyACM3)
+ENV{ID_PATH}=="platform-xhci-hcd.1-usb-0:2.4:1.0", SYMLINK+="steer", MODE:="0777"
+
+# IR Temp Sensor (ttyUSB0)
+ENV{ID_PATH}=="platform-xhci-hcd.1-usb-0:2.3:1.0", SYMLINK+="irtemp", MODE:="0777"
+# Alternate match for IR Temp via port0 suffix if above fails
+ENV{ID_PATH}=="platform-xhci-hcd.1-usb-0:2.3:1.0-port0", SYMLINK+="irtemp", MODE:="0777"
+
+# RPLidar (Match by ID since path is unknown/unplugged)
+ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="rplidar", MODE:="0777"
+
+# Extra/Unknown Devices (ttyACM2)
+ENV{ID_PATH}=="platform-xhci-hcd.0-usb-0:2.2:1.0", SYMLINK+="extra_acm", MODE:="0777"
