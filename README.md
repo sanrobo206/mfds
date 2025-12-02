@@ -66,79 +66,6 @@ Most importantly, the fire alarms cannot send a notification to the person and o
 
 ## Installation
 
-### Prerequisites
-
-```bash
-# Python 3.8+ required
-python3 --version
-
-# Install system dependencies
-sudo apt-get update
-sudo apt-get install -y python3-pip python3-venv libopencv-dev
-```
-
-### Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/sanrobo206/mfds.git
-   cd mfds
-   ```
-
-2. **Create virtual environment**
-   ```bash
-   python3 -m venv ugv_env
-   source ugv_env/bin/activate
-   ```
-
-3. **Install Python dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure udev rules for USB devices**
-   ```bash
-   sudo cp 99-ugv-sensors.rules /etc/udev/rules.d/
-   sudo udevadm control --reload-rules
-   sudo udevadm trigger
-   ```
-
-5. **Configure the system**
-   - Edit `config.yaml` to match your hardware configuration
-   - Set robot name, sensor options, and command codes
-
-6. **Run the application**
-   ```bash
-   python app.py
-   ```
-
-7. **Access the web interface**
-   - Open browser to `http://<raspberry-pi-ip>:5000`
-   - Or `http://localhost:5000` if running locally
-
-## Project Structure
-
-```
-ugv_rpi/
-├── app.py                 # Main Flask application
-├── base_ctrl.py           # Base controller communication
-├── cv_ctrl.py             # Computer vision functions
-├── config.yaml            # Configuration file
-├── requirements.txt       # Python dependencies
-├── 99-ugv-sensors.rules   # USB device udev rules
-├── mfds/
-│   ├── steer/            # Steering servo control
-│   ├── gimbal/           # Gimbal pan/tilt control
-│   ├── lidar/            # RPLidar control and scanning
-│   ├── irtemp/           # IR temperature sensor
-│   └── yolo/             # YOLOv8 fire/smoke detection
-├── templates/            # Web UI templates
-│   ├── index.html        # Main control interface
-│   └── control.js        # Frontend JavaScript
-└── media/                # Images and media files
-```
-
-## Usage
 
 ### Web Interface Features
 
@@ -150,23 +77,6 @@ ugv_rpi/
 6. **Video Streaming**: Live camera feed with LiDAR point overlay
 7. **Virtual Keyboard**: On-screen keyboard for touchscreen devices
 
-### Command Line Testing
-
-Individual modules can be tested independently:
-
-```bash
-# Test steering
-python -m mfds.steer.steer_ctrl
-
-# Test gimbal
-python -m mfds.gimbal.gimbal_ctrl
-
-# Test LiDAR
-python -m mfds.lidar.rplidar_ctrl
-
-# Test IR temperature
-python -m mfds.irtemp.irtemp_read
-```
 
 ## Configuration
 
@@ -187,45 +97,8 @@ Key configuration options:
 - `base_config`: Robot name, version, sensor options
 - `cmd_config`: Command codes for various functions
 - `args_config`: Speed and rate limits
-- `audio_config`: Audio output settings
 
-## Development
 
-### Adding New Sensors
-
-1. Create a new module in `mfds/<sensor_name>/`
-2. Implement controller class with initialization and read methods
-3. Add to `app.py` initialization
-4. Update `config.yaml` with command codes
-5. Add UI controls in `templates/index.html`
-6. Update `templates/control.js` for frontend handling
-
-### Adding New Actuators
-
-1. Create controller module in `mfds/<actuator_name>/`
-2. Implement control methods
-3. Add command handlers in `app.py`
-4. Update UI with control buttons/sliders
-
-## Troubleshooting
-
-### USB Devices Not Found
-
-- Check udev rules: `ls -l /dev/base_secondary /dev/steer /dev/gimbal /dev/rplidar /dev/irtemp`
-- Verify device paths: `ls -l /dev/serial/by-path/`
-- Reload udev: `sudo udevadm control --reload-rules && sudo udevadm trigger`
-
-### Sensor Values Showing Zero
-
-- Check JavaScript console for errors
-- Verify serial connections
-- Check device permissions: `ls -l /dev/<device>`
-
-### LiDAR Not Rotating
-
-- Verify power supply (LiDAR requires adequate current)
-- Check serial connection on `/dev/rplidar`
-- Review terminal output for error messages
 
 ## License
 
