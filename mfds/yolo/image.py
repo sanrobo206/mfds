@@ -1,0 +1,30 @@
+import cv2
+import matplotlib.pyplot as plt
+
+img = cv2.imread('myphoto.jpg')
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+plt.imshow(img_rgb)
+plt.title("Original Image")
+plt.axis('off')
+plt.show()
+
+print("image shape:", img_rgb.shape)
+print("Pixel at (50, 100):", img_rgb[50, 100])
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+plt.imshow(gray, cmap='gray')
+plt.title("Grayscale")
+plt.axis('off')
+plt.show()
+blur = cv2.GaussianBlur(img, (7,7), 0)
+plt.imshow(cv2.cvtColor(blur, cv2.COLOR_BGR2RGB))
+plt.title("Blurred Image")
+plt.axis("off")
+plt.show()
+img_copy = img.copy()
+cv2.rectangle(img_copy, (50, 50), (200, 200), (0,255,0), 3)
+cv2.putText(img_copy, "Hello!", (60, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2)
+plt.imshow(cv2.cvtColor(img_copy, cv2.COLOR_BGR2RGB))
+plt.title("Edited Image")
+plt.axis('off')
+plt.show()
