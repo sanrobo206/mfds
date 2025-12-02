@@ -1,4 +1,4 @@
-# MFDS UGV Robot Control System
+# Mobile Fire Detection System
 
 A comprehensive control system for a six-wheeled Unmanned Ground Vehicle (UGV) robot built on Raspberry Pi, featuring advanced sensor integration, computer vision, and web-based remote control.
 
@@ -6,7 +6,15 @@ A comprehensive control system for a six-wheeled Unmanned Ground Vehicle (UGV) r
 
 ## Overview
 
-The MFDS (Multi-Function Detection System) UGV is an autonomous rover platform designed for exploration, monitoring, and detection tasks. The system integrates multiple sensors, actuators, and AI capabilities to provide a robust robotic platform.
+The project investigated how making a mobile fire detection system could be a big improvement in response time than the conventional fire alarm system. The goal of the project was to make a mobile fire detection system which could not only detect the fire or signs of fire but also give the status of the house and can be remotely controlled, even when away. There was a web browser based website which would constantly give the status of the house when there was no fire, but if there was fire or any sign of fire, there would be a notification. The testing first occurred in the house, then if the majority of the time the system was able to detect the fire and then give the notification, the testing occurred in the forest. The rover (the part that made the system mobile) was capable of climbing up and down the stairs and had 6 wheels. Not only was the ability to detect and give a notification of the fire going to be tested, but also the rover's ability to climb the stairs was going to be assessed. Both of the factors determined if this system passed or didn't pass. Because the rover might be limited to being terrestrial, a further improvement that could be made so every area in the forest could be monitored, was making a drone that could get launched from the rover (which would be improved so that it could be used as a launchpad for the drone), and then do surveillance over the forest. For further improvement, a drone would be added so it could reach every part of the forest in which the rover cannot reach.
+Keywords: Mobile fire detection system, rover, drone, fire alarm, surveillance
+
+
+Mobile Fire Detection System
+	As of now, the majority of the fires tend to occur in the kitchen and in dry forests which is a really big hazard. More than 40 percent of the fires occur due to leaving the kitchen unattended, and can lead to many devastating effects that are hard to recover (NFPA, 2025).
+	When the house is unattended, a fire alarm is ineffective. Even though the fire alarm is really loud, there is no notification system in order to notify the person if they are away, which makes it really hard to get an immediate response to the situation. Also fire alarms are not mobile and are not vision based, so the fire alarms may not be able to get to every single area giving the risk of the fire continuing to the fire alarm, which is when every object in its path is destroyed. A solution is to make a mobile fire detection system that includes a stair-climbing rover and one robot arm that has multiple fire detection sensors and has a camera. Unlike fire alarms, this approach can use computer vision including a YOLO model to detect the fire or any signs of fire, so that it can be dealt with before the situation gets worse. (Florida Atlantic University, 2025). 
+Most importantly, the fire alarms cannot send a notification to the person and only the people near the house can hear the alarm, so, a website will be made, which gives the video clip of the fire and then gives a notification. Then for quick action the website will automatically call the fire station. 
+
 
 ### Key Features
 
@@ -25,9 +33,8 @@ The MFDS (Multi-Function Detection System) UGV is an autonomous rover platform d
 
 ### Chassis & Mobility
 - **6-Wheel Drive System**: Three wheels per side with independent control
-- **Rocker-Bogie Suspension**: Lightweight, robust suspension for uneven terrain
-- **Dual Motor Controllers**: Primary and secondary base controllers for wheel control
 - **Steering Servos**: 4 serial bus servos (SCS-series) for steering control
+- **etc.**
 
 ### Sensors
 - **RPLidar A1M8**: 360° 2D scanning LiDAR (12-meter range)
@@ -37,11 +44,11 @@ The MFDS (Multi-Function Detection System) UGV is an autonomous rover platform d
 
 ### Actuators
 - **Gimbal Servos**: 2x Feetech STS3215 servos (Pan ID: 11, Tilt ID: 12)
-- **Steering Servos**: 4x SCS-series servos for wheel steering
+- **Steering Servos**: 6x SCS-series servos for wheel steering
 
 ### Computing
 - **Raspberry Pi**: Main control unit (Pi 4 or Pi 5)
-- **ESP32**: Lower-level motor/sensor control via UART
+- **2x ESP32**: Lower-level motor/sensor control via UART
 
 ## Software Architecture
 
