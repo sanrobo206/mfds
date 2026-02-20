@@ -1,0 +1,5 @@
+remote_theme: pages-themes/minimal
+plugins:
+  - jekyll-remote-theme
+title: [Sanatan - Mobile Fire Detection System]
+description: [by Sanatan Sinha]
