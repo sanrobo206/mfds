@@ -1,3 +1,7 @@
+---
+layout: home
+title: Sanatan Sinha
+---
 # Mobile Fire Detection System
 
 A comprehensive control system for a six-wheeled Unmanned Ground Vehicle (UGV) robot built on Raspberry Pi, featuring advanced sensor integration, computer vision, and web-based remote control.
